@@ -9,6 +9,7 @@ import akshare as ak
 
 
 class TestPandasKLine():
+    file_name = "./QTT/data/demo_000001.csv"
     
     # 获取数据    
     def getData(self):
@@ -23,13 +24,13 @@ class TestPandasKLine():
                                 '最低': 'Low', 
                                 '成交量': 'Volume'})
         
-        df.to_csv("./python/量化交易/data/demo_000001.csv", header=True, index=False)
-        df.to_excel("./python/量化交易/data/demo_000001.xlsx",header=True,index=False)
+        df.to_csv(self.file_name, header=True, index=False)
+        df.to_excel(self.file_name,header=True,index=False)
     
     # 画K线图
     def testPandasKLine(self):
-        file_name = "./python/量化交易/data/demo_000001.csv"
-        df = pd.read_csv(file_name)
+        #file_name = "./python/量化交易/data/demo_000001.csv"
+        df = pd.read_csv(self.file_name)
         
         df['MA5'] = df['Close'].rolling(5).mean()
         df['MA10'] = df['Close'].rolling(10).mean()
@@ -73,8 +74,8 @@ class TestPandasKLine():
         # plt.show()
         
     def testKLineByVolume(self):
-        file_name = "./python/量化交易/data/demo_000001.csv"
-        df = pd.read_csv(file_name)
+        # file_name = "./python/量化交易/data/demo_000001.csv"
+        df = pd.read_csv(self.file_name)
         
         df = df[["date","Close","Open","High","Low","Volume"]]
         df["date"] = pd.to_datetime(df["date"])
