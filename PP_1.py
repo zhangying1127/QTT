@@ -18,3 +18,6 @@
 # PCF_ttm                         小于市场平均值
 # 最近12个月股价跌幅                相对大盘跌幅/大盘跌幅绝对值<-50%
 # 最近1个月股份跌幅                  大于大盘指数涨幅
+
+import pandas as pd
+import numpy as np
